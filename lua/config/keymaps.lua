@@ -19,3 +19,6 @@ vim.keymap.set({ "n", "v", "i" }, "<up>", '<cmd>echo "Use k to move!!"<CR>', { d
 vim.keymap.set({ "n", "v", "i" }, "<down>", '<cmd>echo "Use j to move!!"<CR>', { desc = "down arrow helper" })
 
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
+-- Do not copy x to clipboard
+vim.keymap.set({ "n", "x" }, "x", '"_x')
