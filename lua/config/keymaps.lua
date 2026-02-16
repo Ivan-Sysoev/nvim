@@ -22,3 +22,28 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 
 -- Do not copy x to clipboard
 vim.keymap.set({ "n", "x" }, "x", '"_x')
+
+-- vim.keymap.set("v", '<leader>"', [[gsa"]])
+
+-- vim.keymap.set("n", "<leader>ci", function()
+-- 	vim.lsp.buf.code_action({
+-- 		apply = true,
+-- 		context = { only = { "source.organizeIncludes" } },
+-- 	})
+-- end, { desc = "Clangd: Organize Includes" })
+
+vim.keymap.set("n", "<leader>ci", function()
+	vim.lsp.buf.code_action({
+		filter = function(action)
+			return action.title == "Clangd: Organize includes"
+		end,
+		apply = true,
+	})
+end, { desc = "Organize #includes (clangd)" })
+
+vim.keymap.set("n", "<leader>cd", function()
+	vim.fn.jobstart({ "open", "-R", vim.api.nvim_buf_get_name(0) }, { detach = true })
+end, { desc = "Open current firectory in finder" })
+
+-- Switching Root Dir with cwd in standart LazyVim keymaps
+-- TODO : Remap <leader>e with <leader>E and <leader>f with <leader>F

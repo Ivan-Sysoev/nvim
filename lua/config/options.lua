@@ -27,7 +27,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- [mark] little errors indicators
-vim.o.signcolumn = "no"
+vim.o.signcolumn = "yes"
 
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
@@ -49,3 +49,7 @@ vim.o.scrolloff = 10
 
 -- [mark] confirm message
 vim.o.confirm = true
+
+-- Disable Ex after projects opens
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1

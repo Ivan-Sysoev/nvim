@@ -9,7 +9,27 @@ return {
 		},
 
 		inlay_hints = { enabled = false }, -- Example: enable inlay hints
-		-- servers = {
+
+		servers = {
+			clangd = {
+				cmd = {
+					"clangd",
+					"--header-insertion=iwyu",
+					"--header-insertion-decorators",
+					"--clang-tidy",
+				},
+			},
+		},
+
+		capabilities = {
+			textDocument = {
+				completion = {
+					completionItem = {
+						snippetSupport = false, -- Говорим серверу: "Я не понимаю сниппеты"
+					},
+				},
+			},
+		},
 
 		-- 	-- Example: Config Pyright
 		-- 	pyright = {
@@ -33,10 +53,5 @@ return {
 				},
 			},
 		},
-		-- clangd = {
-		-- 	setup = {
-		-- 		cmd = { "clangd", "--header-insertion=never" },
-		-- 	},
-		-- },
 	},
 }
