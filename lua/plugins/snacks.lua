@@ -1,11 +1,11 @@
 return {
-	{
-		"folke/snacks.nvim",
-		opts = {
-			explorer = {
-				enabled = false,
-				trash = true, -- Use the system trash when deleting files
-			},
+	"folke/snacks.nvim",
+	opts = {
+		explorer = {
+			enabled = false,
+			trash = true, -- Use the system trash when deleting files
+			-- ignored = true,
+			-- hidden = true,
 		},
 	},
 }
