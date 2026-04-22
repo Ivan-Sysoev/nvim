@@ -4,8 +4,19 @@ return {
 		explorer = {
 			enabled = false,
 			trash = true, -- Use the system trash when deleting files
-			-- ignored = true,
-			-- hidden = true,
+
+			finder = {
+				args = { "--hidden", "--no-ignore" },
+			},
+		},
+		picker = {
+			sources = {
+				files = {
+					hidden = true,
+					ignored = true,
+				},
+			},
 		},
 	},
 }
+

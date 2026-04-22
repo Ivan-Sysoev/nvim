@@ -5,6 +5,7 @@ return {
 	--  opts = {
 	--    style = "night", -- set the style to 'night'
 	--  },
+	
 	"rockyzhang24/arctic.nvim",
 	dependencies = { "rktjmp/lush.nvim" },
 	name = "arctic",
@@ -13,4 +14,10 @@ return {
 	config = function()
 		vim.cmd("colorscheme arctic")
 	end,
+
+	-- "morhetz/gruvbox",
+	-- name = "gruvbox",
+	-- config = function()
+	-- 	vim.cmd("colorscheme gruvbox")
+	-- end,
 }
