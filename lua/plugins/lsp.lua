@@ -1,18 +1,24 @@
 return {
 	"neovim/nvim-lspconfig",
-	opts = {
-		ensure_installed = {
+	opts = function(_, opts)
+		opts.diagnostics = {
+			virtual_text = {
+				severity = { min = vim.diagnostic.severity.ERROR },
+			},
+		}
+
+		opts.ensure_installed = {
 			"lua_ls", -- Lua
 			"ltex", -- LaTeX
 			"pylsp", -- Python
 			"clangd", -- C/C++
 			"verible-verilog-ls", -- Verilog
-		},
+		}
 
-		inlay_hints = { enabled = false }, -- Example: enable inlay hints
-		autoformat = false,
+		opts.inlay_hints = { enabled = false }
+		opts.autoformat = false
 
-		servers = {
+		opts.servers = {
 			verible = {
 				cmd = {
 					"verible-verilog-ls", "--rules=-no-tabs"
@@ -26,9 +32,18 @@ return {
 					"--clang-tidy",
 				},
 			},
-		},
+			lua_ls = {
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
+					},
+				},
+			},
+		}
 
-		capabilities = {
+		opts.capabilities = {
 			textDocument = {
 				completion = {
 					completionItem = {
@@ -36,29 +51,8 @@ return {
 					},
 				},
 			},
-		},
+		}
 
-		-- 	-- Example: Config Pyright
-		-- 	pyright = {
-		-- 		settings = {
-		-- 			python = {
-		-- 				analysis = {
-		-- 					autoSearchPaths = true,
-		-- 					useLibraryCodeForTypes = true,
-		-- 					diagnosticMode = "workspace",
-		-- 				},
-		-- 			},
-		-- 		},
-		-- 	},
-
-		lua_ls = {
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
-					},
-				},
-			},
-		},
-	},
+		return opts
+	end,
 }
