@@ -50,10 +50,6 @@ vim.o.scrolloff = 10
 -- [mark] confirm message
 vim.o.confirm = true
 
--- Disable Ex after projects opens
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
-
 -- For persistence
 vim.opt.sessionoptions:append("globals")
 
