@@ -28,5 +28,16 @@ return {
 			end,
 			desc = "Restore Session",
 		},
+
+		-- Press <leader>ns to start from a clean slate in this folder
+		{
+			"<leader>ns",
+			function()
+				vim.cmd("%bdelete") -- aborts with E89 if a buffer has unsaved changes
+				os.remove(require("persistence").current())
+				vim.notify("New session started", vim.log.levels.INFO)
+			end,
+			desc = "New Session",
+		},
 	},
 }
