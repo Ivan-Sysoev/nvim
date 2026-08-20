@@ -7,6 +7,13 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "lazy",
+    callback = function()
+        vim.cmd.close()
+    end,
+})
+
 -- Disable autoformat for lua files
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "c", "cpp", "cmake" },

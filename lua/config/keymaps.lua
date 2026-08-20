@@ -3,7 +3,7 @@
 -- Add any additional keymaps here
 
 -- [[ Custom keymaps ]]
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Enter Ex mode" })
+-- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Enter Ex mode" })
 vim.keymap.set("n", "<leader>w", "<cmd>write<cr>", { desc = "Save file" })
 
 -- Copy/Paste buffers
@@ -29,6 +29,11 @@ vim.keymap.set("n", "Q", function()
 	vim.cmd("normal! @" .. reg)
 end, { desc = "Repeat last macros" })
 
+-- Disable ex mode on startup
+vim.keymap.set("n", "Q", "<Nop>", { desc = "Disable Ex-mode" })
+vim.keymap.set("n", "gQ", "<Nop>", { desc = "Disable Ex-mode" })
+
+-- Setup quicker gsa
 -- vim.keymap.set("v", '<leader>"', [[gsa"]])
 
 -- vim.keymap.set("n", "<leader>ci", function()
@@ -51,12 +56,9 @@ vim.keymap.set("n", "<leader>cd", function()
 	vim.fn.jobstart({ "open", "-R", vim.api.nvim_buf_get_name(0) }, { detach = true })
 end, { desc = "Open current firectory in finder" })
 
--- Switching Root Dir with cwd in standart LazyVim keymaps
--- TODO : Remap <leader>e with <leader>E and <leader>f with <leader>F
-
-vim.keymap.set("n", "<leader>f", function()
-	require("telescope.builtin").find_files({
-		hidden = true,
-		no_ignore = true,
-	})
-end)
+-- vim.keymap.set("n", "<leader>f", function()
+-- 	require("telescope.builtin").find_files({
+-- 		hidden = true,
+-- 		no_ignore = true,
+-- 	})
+-- end)

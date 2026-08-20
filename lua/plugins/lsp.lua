@@ -13,6 +13,17 @@ return {
 		autoformat = false,
 
 		servers = {
+			["*"] = {
+				capabilities = {
+					textDocument = {
+						completion = {
+							completionItem = {
+								snippetSupport = false,
+							},
+						},
+					},
+				},
+			},
 			verible = {
 				cmd = {
 					"verible-verilog-ls", "--rules=-no-tabs"
@@ -26,13 +37,12 @@ return {
 					"--clang-tidy",
 				},
 			},
-		},
-
-		capabilities = {
-			textDocument = {
-				completion = {
-					completionItem = {
-						snippetSupport = false,
+			lua_ls = {
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
 					},
 				},
 			},
@@ -51,14 +61,5 @@ return {
 		-- 		},
 		-- 	},
 
-		lua_ls = {
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
-					},
-				},
-			},
-		},
 	},
 }
