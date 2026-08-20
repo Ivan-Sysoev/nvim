@@ -29,6 +29,15 @@ return {
 			desc = "Restore Session",
 		},
 
+		-- Press <leader>ls to pick a session from any folder, newest first
+		{
+			"<leader>ls",
+			function()
+				require("persistence").select()
+			end,
+			desc = "List Sessions",
+		},
+
 		-- Press <leader>ns to start from a clean slate in this folder
 		{
 			"<leader>ns",
