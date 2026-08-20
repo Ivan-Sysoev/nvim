@@ -54,4 +54,10 @@ vim.o.confirm = true
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
 
+-- For persistence
+vim.opt.sessionoptions:append("globals")
+
+-- -- Save macros across sessions
+-- vim.opt.shada = "!,'100,<50,s10,h"
+
 vim.g.autoformat = false
