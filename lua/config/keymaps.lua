@@ -23,6 +23,12 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 -- Do not copy x to clipboard
 vim.keymap.set({ "n", "x" }, "x", '"_x')
 
+-- Shift+q for repeating last macros
+vim.keymap.set("n", "Q", function()
+	local reg = vim.g.last_recorded_reg or "q"
+	vim.cmd("normal! @" .. reg)
+end, { desc = "Repeat last macros" })
+
 -- vim.keymap.set("v", '<leader>"', [[gsa"]])
 
 -- vim.keymap.set("n", "<leader>ci", function()

@@ -14,3 +14,14 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		vim.b.autoformat = false
 	end,
 })
+
+-- Shift+Q for just recorded macros
+vim.g.last_recorded_reg = "q"
+vim.api.nvim_create_autocmd("RecordingLeave", {
+	callback = function()
+		local reg = vim.fn.reg_recording()
+		if reg ~= "" then
+			vim.g.last_recorded_reg = reg
+		end
+	end,
+})
