@@ -29,32 +29,8 @@ vim.keymap.set("n", "Q", function()
 	vim.cmd("normal! @" .. reg)
 end, { desc = "Repeat last macros" })
 
--- Setup quicker gsa
--- vim.keymap.set("v", '<leader>"', [[gsa"]])
-
--- vim.keymap.set("n", "<leader>ci", function()
--- 	vim.lsp.buf.code_action({
--- 		apply = true,
--- 		context = { only = { "source.organizeIncludes" } },
--- 	})
--- end, { desc = "Clangd: Organize Includes" })
-
--- vim.keymap.set("n", "<leader>ci", function()
--- 	vim.lsp.buf.code_action({
--- 		filter = function(action)
--- 			return action.title == "Clangd: Organize includes"
--- 		end,
--- 		apply = true,
--- 	})
--- end, { desc = "Organize #includes (clangd)" })
-
 vim.keymap.set("n", "<leader>cd", function()
 	vim.fn.jobstart({ "open", "-R", vim.api.nvim_buf_get_name(0) }, { detach = true })
 end, { desc = "Open current firectory in finder" })
 
--- vim.keymap.set("n", "<leader>f", function()
--- 	require("telescope.builtin").find_files({
--- 		hidden = true,
--- 		no_ignore = true,
--- 	})
--- end)
+require("config.keymaps.surround")
