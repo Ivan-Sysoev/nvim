@@ -11,7 +11,7 @@ return {
 		},
 	},
 	opts = {
-		dashboard = { enabled = false }, -- the session restores itself, no start screen needed
+		dashboard = { enabled = true }, -- LazyVim startup screen
 		notifier = { level = vim.log.levels.WARN }, -- only warnings and errors pop up
 		explorer = {
 			enabled = false,

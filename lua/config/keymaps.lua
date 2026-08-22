@@ -29,10 +29,6 @@ vim.keymap.set("n", "Q", function()
 	vim.cmd("normal! @" .. reg)
 end, { desc = "Repeat last macros" })
 
--- Disable ex mode on startup
-vim.keymap.set("n", "Q", "<Nop>", { desc = "Disable Ex-mode" })
-vim.keymap.set("n", "gQ", "<Nop>", { desc = "Disable Ex-mode" })
-
 -- Setup quicker gsa
 -- vim.keymap.set("v", '<leader>"', [[gsa"]])
 
