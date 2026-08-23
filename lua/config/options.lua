@@ -57,3 +57,6 @@ vim.opt.sessionoptions:append("globals")
 -- vim.opt.shada = "!,'100,<50,s10,h"
 
 vim.g.autoformat = false
+
+-- "Root Dir" always stay in the working directory instead of jumping to parent
+vim.g.root_spec = { "cwd" }

@@ -33,3 +33,8 @@ vim.keymap.set("n", "<leader>cd", function()
 end, { desc = "Open current firectory in finder" })
 
 require("config.keymaps.surround")
+
+-- Global search in home dir
+vim.keymap.set("n", "<leader>F", function()
+	Snacks.picker.files({ cwd = vim.uv.os_homedir() })
+end, { desc = "Find Files (home)" })
