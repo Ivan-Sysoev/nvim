@@ -25,9 +25,8 @@ vim.keymap.set({ "n", "x" }, "x", '"_x')
 
 -- Shift+q for repeating last macros
 vim.keymap.set("n", "Q", function()
-	local reg = vim.g.last_recorded_reg or "q"
-	vim.cmd("normal! @" .. reg)
-end, { desc = "Repeat last macros" })
+	return "@" .. (vim.g.last_recorded_reg or "q")
+end, { expr = true, desc = "Repeat last macros" })
 
 vim.keymap.set("n", "<leader>cd", function()
 	vim.fn.jobstart({ "open", "-R", vim.api.nvim_buf_get_name(0) }, { detach = true })
