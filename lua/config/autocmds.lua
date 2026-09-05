@@ -26,18 +26,10 @@ vim.api.nvim_create_autocmd("RecordingLeave", {
 	end,
 })
 
--- -- Deletes Ex buffer on session recover
--- -- Make startup slower, so just don't enter with nvim .
--- local function unlist_directory_buffer(buf)
--- 	if vim.fn.isdirectory(vim.api.nvim_buf_get_name(buf)) == 1 then
--- 		vim.bo[buf].buflisted = false
--- 	end
--- end
---
--- vim.api.nvim_create_autocmd("BufAdd", {
--- 	callback = function(event)
--- 		unlist_directory_buffer(event.buf)
--- 	end,
--- })
---
--- vim.tbl_map(unlist_directory_buffer, vim.api.nvim_list_bufs())
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.go",
+	callback = function()
+		vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
+		vim.lsp.buf.code_action({ context = { only = { "source.fixAll" } }, apply = true })
+	end,
+})
