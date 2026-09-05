@@ -9,6 +9,8 @@ local visual_surrounds = {
 	["]"] = "]",
 	["{"] = "{",
 	["}"] = "}",
+	["<"] = "<",
+	[">"] = ">",
 }
 
 for key, char in pairs(visual_surrounds) do

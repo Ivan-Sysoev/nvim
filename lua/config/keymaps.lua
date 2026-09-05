@@ -38,3 +38,6 @@ require("config.keymaps.surround")
 vim.keymap.set("n", "<leader>F", function()
 	Snacks.picker.files({ cwd = vim.uv.os_homedir() })
 end, { desc = "Find Files (home)" })
+
+-- Show varible type
+vim.keymap.set("n", "T", vim.lsp.buf.hover, { buffer = true })
