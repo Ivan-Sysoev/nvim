@@ -6,5 +6,7 @@ return {
 		-- For example, to map the case switching function:
 		vim.api.nvim_set_keymap("n", "<leader>tp", ":CaseMasterConvertToPascal<CR>", { noremap = true, silent = true })
 		vim.api.nvim_set_keymap("n", "<leader>ts", ":CaseMasterConvertToSnake<CR>", { noremap = true, silent = true })
+		vim.api.nvim_set_keymap("n", "<leader>tk", ":CaseMasterConvertToCamel<CR>", { noremap = true, silent = true })
+		vim.api.nvim_set_keymap("n", "<leader>tm", ":CaseMasterConvertToMacro<CR>", { noremap = true, silent = true })
 	end,
 }
