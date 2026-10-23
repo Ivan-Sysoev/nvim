@@ -2,13 +2,6 @@ return {
 	"folke/snacks.nvim",
 	keys = {
 		{ "<leader>n", false },
-		{
-			"<leader>nh",
-			function()
-				Snacks.picker.notifications()
-			end,
-			desc = "Notification History",
-		},
 	},
 	opts = {
 		dashboard = { enabled = true }, -- LazyVim startup screen
