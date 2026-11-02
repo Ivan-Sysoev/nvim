@@ -1,0 +1,16 @@
+{
+  "Result type": {
+    "prefix": "result",
+    "description": "abstract record Result with Success / Failure",
+    "body": [
+      "public abstract record ${1:${TM_FILENAME_BASE}}",
+      "{",
+      "\tprivate $1() { }",
+      "",
+      "\tpublic sealed record Success : $1;",
+      "",
+      "\tpublic sealed record Failure(string ErrorMessage) : $1;",
+      "}$0"
+    ]
+  }
+}

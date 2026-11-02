@@ -44,16 +44,32 @@ local function fill_template(buf)
 		return
 	end
 	local name = vim.fn.fnamemodify(file, ":t:r")
-	local kind = name:match("^I%u") and "public interface " or "public sealed class "
+	local isInterface = name:match("^I%u") ~= nil
 
-	vim.api.nvim_buf_set_lines(buf, 0, -1, false, {
+	local lines = {
 		"namespace " .. ns .. ";",
 		"",
-		kind .. name,
-		"{",
-		"",
-		"}",
-	})
+	}
+	if isInterface then
+		vim.list_extend(lines, {
+			"public interface " .. name,
+			"{",
+			"",
+			"}",
+		})
+	else
+		vim.list_extend(lines, {
+			"public sealed class " .. name,
+			"{",
+			"    public " .. name .. "()",
+			"    {",
+			"",
+			"    }",
+			"}",
+		})
+	end
+
+	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
 
 	vim.fn.mkdir(vim.fs.dirname(file), "p")
 	vim.api.nvim_buf_call(buf, function()
@@ -61,7 +77,7 @@ local function fill_template(buf)
 	end)
 
 	if vim.api.nvim_get_current_buf() == buf then
-		vim.api.nvim_win_set_cursor(0, { 5, 0 })
+		vim.api.nvim_win_set_cursor(0, { isInterface and 5 or 7, 0 })
 	end
 end
 
